@@ -1,5 +1,21 @@
 const inquirer = require('inquirer');
 // const utils = require('./utils/pageGenerator')
+// const mysql = require('mysql2');
+
+// const db = mysql.createConnection(
+//   {
+//     host: 'localhost',
+//     user: 'root',
+//     password: '',
+//     database: 'classlist_db'
+//   },
+//   console.log(`Connected to the classlist_db database.`)
+// );
+
+// db.query('SELECT * FROM students', function (err, results) {
+//   console.log(results);
+// });
+
 
 const startQuestions = [
   {
@@ -15,7 +31,7 @@ const startQuestions = [
     "Update employee role",
   ]
   },
-]
+];
 
 const addDepartmentQuestions = [
   {
@@ -24,7 +40,7 @@ const addDepartmentQuestions = [
     name: 'newDepartmentTitle',
   },
 
-]
+];
 
 const newRole = [
   {
@@ -41,7 +57,7 @@ const newRole = [
     message: 'Enter department of new role',
     name: 'newRoleDepartment',
   },
-]
+];
 
 const newEmployee = [
   {
@@ -64,7 +80,7 @@ const newEmployee = [
     message: 'Enter employees manager',
     name: 'newEmployeeManager',
   },
-]
+];
 
 
 
