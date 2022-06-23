@@ -1,23 +1,25 @@
-INSERT INTO department ((id, name)
-VALUES ( 1, "Engineering"),
-       ( 2, "Manufacturing"),
-       ( 3, "R&D"),
-       ( 4, "Operations"),
-       ( 5, "Support")
-)
+USE aggregate_db; 
 
-INSERT INTO role ((id, name, salary, department_id)
-VALUES ("A", "Engineer", "100000", 01),
-       ("B", "Assembler", "50000", 02),
-       ("C", "Technician", "60000", 03),
-       ("D", "Pilot", "120000", 05),
-       ("E", "IT", "130000", 06),
-)
+INSERT INTO department (dept_id, dept_name)
+VALUES ( 011, "Engineering"),
+       ( 022, "Manufacturing"),
+       ( 033, "R&D"),
+       ( 044, "Operations"),
+       ( 055, "Support")
+;
 
-INSERT INTO employee ((id, first_name, last_name, role_id, manager_id)
-VALUES (100, "Jimbo", "Jones", "A", "Sarah"),
-       (101, "Jimmy", "Justice", "B", "Sarah"),
-       (102, "James", "Jonash", "C", "Kerry"),
-       (103, "Geraldo", "Rivera", "D", "Kerry"),
-       (200, "Patty", "Creshaw", "E", " "),
-)
+INSERT INTO role (role_id, role_name, salary, dept_id)
+VALUES ( 1000, "Engineer", "100000", 011),
+       ( 2000, "Assembler", "50000", 022),
+       ( 3000, "Technician", "60000", 033),
+       ( 4000, "Pilot", "120000", 044),
+       ( 5000, "IT", "130000", 055)
+;
+
+INSERT INTO employee (empl_id, first_name, last_name, role_id, manager_id)
+VALUES ( 100, "Jimbo", "Jones", 1000, 6),
+       ( 101, "Jimmy", "Justice", 2000, 6),
+       ( 102, "James", "Jonash", 3000, 6),
+       ( 103, "Geraldo", "Rivera", 4000, 1),
+       ( 200, "Patty", "Creshaw", 5000, 1)
+;
