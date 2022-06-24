@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 require('table');
 
+//Dont need?
 // const utils = require('./utils/pageGenerator')
 
 const mysql = require('mysql2');
@@ -34,7 +35,6 @@ const startQuestions = [
     ]
   },
 ];
-
 
 const startMenu = () => {
   inquirer.prompt(startQuestions).then((answer) => {
@@ -137,7 +137,7 @@ const viewAllEmployees = () => {
   });
 }
 
-//GET ME WORKING
+//GET ME WORKING FIRST
 const addDepartment = () => {
   db.connect(function (err) {
     if (err) throw err;
@@ -180,9 +180,6 @@ const addDepartment = () => {
   });
 
 }
-
-
-
 
 const addEmployee = () => {
   db.connect(function (err) {

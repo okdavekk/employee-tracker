@@ -17,6 +17,7 @@ CREATE TABLE role (
 ); 
 
 CREATE TABLE employee (
+  /* AUTO_INCEMENT ? */
   empl_id INT PRIMARY KEY,
   first_name VARCHAR(30),
   last_name VARCHAR(30),
