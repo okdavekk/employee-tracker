@@ -3,6 +3,7 @@ const inquirer = require('inquirer');
 
 const mysql = require('mysql2');
 
+//Broke
 // const { startMenu, viewAllDepartments, viewAllRoles, viewAllEmployees, addDepartment, addEmployee, updateEmployeeRole} = require('./helpers/indexHelper')
 
 const db = mysql.createConnection(
@@ -27,6 +28,7 @@ const startQuestions = [
       "Add a department",
       "Add an employee",
       "Update employee role",
+      "Exit"
     ]
   },
 ];
@@ -52,6 +54,9 @@ const startMenu = () => {
     if (answer.startQuestions === "Update employee role") {
       updateEmployeeRole();
     }
+    if (answer.startQuestions === "Exit") {
+      process.exit();
+    }
   });
 }
 
@@ -69,10 +74,12 @@ const viewAllDepartments = () => {
           "Exit"
         ]
       },
-    ])
-      .then(answer => {
+    ]).then(answer => {
         if (answer.mainMenuQuestion === "Main menu") {
           startMenu();
+        }
+        if (answer.mainMenuQuestion === "Exit") {
+          process.exit();
         }
       })
   });
@@ -92,10 +99,12 @@ const viewAllRoles = () => {
           "Exit"
         ]
       },
-    ])
-      .then(answer => {
+    ]).then(answer => {
         if (answer.viewAllRoles === "Main menu") {
           startMenu();
+        }
+        if (answer.viewAllRoles === "Exit") {
+          process.exit();
         }
       })
   });
@@ -115,15 +124,18 @@ const viewAllEmployees = () => {
           "Exit"
         ]
       },
-    ])
-      .then(answer => {
+    ]).then(answer => {
         if (answer.viewAllEmployees === "Main menu") {
           startMenu();
+        }
+        if (answer.viewAllEmployees === "Exit") {
+          process.exit();
         }
       })
   });
 }
 
+//GET ME WORKING
 const addDepartment = () => {
   db.connect(function (err) {
     if (err) throw err;
@@ -147,13 +159,14 @@ const addDepartment = () => {
           "Exit"
         ]
       },
-    ])
-
-      .then(answer => {
-        if (answer.addDepartmentMainExit === "Main menu") {
-          startMenu();
-        }
-      })
+    ]).then(answer => {
+      if (answer.addDepartmentMainExit === "Main menu") {
+        startMenu();
+      }
+      if (answer.addDepartmentMainExit === "Exit") {
+        process.exit();
+      }
+    })
 
     // var sql = `INSERT INTO department (dept_id, dept_name) VALUES (?, ?);`;
     // let ID = answer.newDepartmentID;
@@ -165,6 +178,9 @@ const addDepartment = () => {
   });
 
 }
+
+
+
 
 const addEmployee = () => {
   db.connect(function (err) {
@@ -199,11 +215,12 @@ const addEmployee = () => {
           "Exit"
         ]
       },
-    ])
-
-      .then(answer => {
+    ]).then(answer => {
         if (answer.addNewEmployeeMainExit === "Main menu") {
           startMenu();
+        }
+        if (answer.addNewEmployeeMainExit === "Exit") {
+          process.exit();
         }
       })
 
@@ -223,7 +240,9 @@ const updateEmployeeRole = () => {
     if (err) throw err;
     // inquirer.prompt(updateEmployeeRole)
     console.log("Broken")
-
+    // if (answer.addDepartmentMainExit === "Exit") {
+    //   process.exit();
+    // }
   })
 }
 

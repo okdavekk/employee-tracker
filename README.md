@@ -6,6 +6,8 @@
 
 - [Resources](#resources)
 
+- [Installation Instructions](#installation)
+
 - [Visuals](#visuals)
 
 - [Authors and Acknowledgement](#authors-and-acknowledgement)
@@ -16,6 +18,12 @@
 - [REPOSITORY](https://github.com/okdavekk/employee-tracker)
 
 - [VIDEO LINK](https://www.awesomescreenshot.com/video/9576714)
+
+## Installation
+- Run npm install to install
+    - inquirer: 8.2.4
+    - mysql2: 2.3.3
+
 
 ## Description
 
