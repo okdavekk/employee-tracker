@@ -3,6 +3,8 @@ const inquirer = require('inquirer');
 
 const mysql = require('mysql2');
 
+// const { startMenu, viewAllDepartments, viewAllRoles, viewAllEmployees, addDepartment, addEmployee, updateEmployeeRole} = require('./helpers/indexHelper')
+
 const db = mysql.createConnection(
   {
     host: 'localhost',
@@ -220,7 +222,7 @@ const updateEmployeeRole = () => {
   db.connect(function (err) {
     if (err) throw err;
     // inquirer.prompt(updateEmployeeRole)
-
+    console.log("Broken")
 
   })
 }
