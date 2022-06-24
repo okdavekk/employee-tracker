@@ -1,4 +1,6 @@
 const inquirer = require('inquirer');
+require('table');
+
 // const utils = require('./utils/pageGenerator')
 
 const mysql = require('mysql2');
@@ -18,7 +20,7 @@ const db = mysql.createConnection(
 
 const startQuestions = [
   {
-    type: 'list',
+    type: 'rawlist',
     message: 'Choose an option',
     name: 'startQuestions',
     choices: [
@@ -63,10 +65,10 @@ const startMenu = () => {
 const viewAllDepartments = () => {
   db.query('SELECT * FROM department', function (err, results) {
     if (err) throw err
-    console.log(results);
+    console.table(results);
     inquirer.prompt([
       {
-        type: 'list',
+        type: 'rawlist',
         message: 'Choose an option',
         name: 'mainMenuQuestion',
         choices: [
@@ -88,10 +90,10 @@ const viewAllDepartments = () => {
 const viewAllRoles = () => {
   db.query('SELECT * FROM role', function (err, results) {
     if (err) throw err
-    console.log(results);
+    console.table(results);
     inquirer.prompt([
       {
-        type: 'list',
+        type: 'rawlist',
         message: 'Choose an option',
         name: 'viewAllRoles',
         choices: [
@@ -113,10 +115,10 @@ const viewAllRoles = () => {
 const viewAllEmployees = () => {
   db.query('SELECT * FROM employee', function (err, results) {
     if (err) throw err
-    console.log(results);
+    console.table(results);
     inquirer.prompt([
       {
-        type: 'list',
+        type: 'rawlist',
         message: 'Choose an option',
         name: 'viewAllEmployees',
         choices: [
@@ -151,7 +153,7 @@ const addDepartment = () => {
         name: 'newDepartmentID',
       },
       {
-        type: 'list',
+        type: 'rawlist',
         message: 'Choose an option',
         name: 'addDepartmentMainExit',
         choices: [
@@ -207,7 +209,7 @@ const addEmployee = () => {
         name: 'addNewEmployeeManager',
       },
       {
-        type: 'list',
+        type: 'rawlist',
         message: 'Choose an option',
         name: 'addNewEmployeeMainExit',
         choices: [

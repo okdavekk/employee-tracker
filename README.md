@@ -21,8 +21,10 @@
 
 ## Installation
 - Run npm install to install
-    - inquirer: 8.2.4
-    - mysql2: 2.3.3
+    - console: 0.7.2,
+    - inquirer: 8.2.4,
+    - mysql2: 2.3.3,
+    - table: ^6.8.0
 
 
 ## Description
