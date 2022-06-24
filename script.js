@@ -29,54 +29,6 @@ const startQuestions = [
   },
 ];
 
-const addDepartmentQuestions = [
-  {
-    type: 'input',
-    message: 'Add title of new department',
-    name: 'newDepartmentTitle',
-  },
-
-];
-
-const newRole = [
-  {
-    type: 'input',
-    message: 'Enter name of new role',
-    name: 'newRoleName',
-  },
-  {
-    type: 'input',
-    message: 'Enter salary of new role',
-    name: 'newRoleSalary',
-  }, {
-    type: 'input',
-    message: 'Enter department of new role',
-    name: 'newRoleDepartment',
-  },
-];
-
-const newEmployee = [
-  {
-    type: 'input',
-    message: 'Enter first name of employee',
-    name: 'newEmployeeFirstName',
-  },
-  {
-    type: 'input',
-    message: 'Enter last name of employee',
-    name: 'newEmployeeLastName',
-  },
-  {
-    type: 'input',
-    message: 'Enter employees role',
-    name: 'newEmployeesRole',
-  },
-  {
-    type: 'input',
-    message: 'Enter employees manager',
-    name: 'newEmployeeManager',
-  },
-];
 
 const startMenu = () => {
   inquirer.prompt(startQuestions).then((answer) => {
@@ -170,6 +122,107 @@ const viewAllEmployees = () => {
   });
 }
 
+const addDepartment = () => {
+  db.connect(function (err) {
+    if (err) throw err;
+    inquirer.prompt([
+      {
+        type: 'input',
+        message: 'Add the name of new department',
+        name: 'newDepartmentName',
+      },
+      {
+        type: 'input',
+        message: 'Add ID of new department',
+        name: 'newDepartmentID',
+      },
+      {
+        type: 'list',
+        message: 'Choose an option',
+        name: 'addDepartmentMainExit',
+        choices: [
+          "Main menu",
+          "Exit"
+        ]
+      },
+    ])
 
+      .then(answer => {
+        if (answer.addDepartmentMainExit === "Main menu") {
+          startMenu();
+        }
+      })
+
+    // var sql = `INSERT INTO department (dept_id, dept_name) VALUES (?, ?);`;
+    // let ID = answer.newDepartmentID;
+    // let deptName = answer.newDepartmentName;
+    // db.query(sql, [ID, deptName], function (err, result) {
+    //   if (err) throw err;
+    //   console.log(result.affectedRows);
+    // });
+  });
+
+}
+
+const addEmployee = () => {
+  db.connect(function (err) {
+    if (err) throw err;
+    inquirer.prompt([
+      {
+        type: 'input',
+        message: 'Enter first name of employee',
+        name: 'addNewEmployeeFirstName',
+      },
+      {
+        type: 'input',
+        message: 'Enter last name of employee',
+        name: 'addNewEmployeeLastName',
+      },
+      {
+        type: 'input',
+        message: 'Enter employees role',
+        name: 'addNewEmployeesRole',
+      },
+      {
+        type: 'input',
+        message: 'Enter employees manager',
+        name: 'addNewEmployeeManager',
+      },
+      {
+        type: 'list',
+        message: 'Choose an option',
+        name: 'addNewEmployeeMainExit',
+        choices: [
+          "Main menu",
+          "Exit"
+        ]
+      },
+    ])
+
+      .then(answer => {
+        if (answer.addNewEmployeeMainExit === "Main menu") {
+          startMenu();
+        }
+      })
+
+    // var sql = `INSERT INTO department (dept_id, dept_name) VALUES (?, ?);`;
+    // let ID = answer.newDepartmentID;
+    // let deptName = answer.newDepartmentName;
+    // db.query(sql, [ID, deptName], function (err, result) {
+    //   if (err) throw err;
+    //   console.log(result.affectedRows);
+    // });
+  });
+
+}
+
+const updateEmployeeRole = () => {
+  db.connect(function (err) {
+    if (err) throw err;
+    // inquirer.prompt(updateEmployeeRole)
+
+
+  })
+}
 
 startMenu();
