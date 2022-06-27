@@ -26,6 +26,9 @@
     - mysql2: 2.3.3,
     - table: ^6.8.0
 
+- Run mysql \-u root to install
+    - schema.sql then
+    - seeds.sql
 
 ## Description
 

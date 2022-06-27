@@ -5,6 +5,7 @@ require('table');
 // const utils = require('./utils/pageGenerator')
 
 const mysql = require('mysql2');
+// const Connection = require('mysql2/typings/mysql/lib/Connection');
 
 //Broke
 // const { startMenu, viewAllDepartments, viewAllRoles, viewAllEmployees, addDepartment, addEmployee, updateEmployeeRole} = require('./helpers/indexHelper')
@@ -63,7 +64,7 @@ const startMenu = () => {
 }
 
 const viewAllDepartments = () => {
-  db.query('SELECT * FROM department', function (err, results) {
+  db.query('SELECT dept_name AS Name FROM department', function (err, results) {
     if (err) throw err
     console.table(results);
     inquirer.prompt([
@@ -77,13 +78,13 @@ const viewAllDepartments = () => {
         ]
       },
     ]).then(answer => {
-        if (answer.mainMenuQuestion === "Main menu") {
-          startMenu();
-        }
-        if (answer.mainMenuQuestion === "Exit") {
-          process.exit();
-        }
-      })
+      if (answer.mainMenuQuestion === "Main menu") {
+        startMenu();
+      }
+      if (answer.mainMenuQuestion === "Exit") {
+        process.exit();
+      }
+    })
   });
 }
 
@@ -102,13 +103,13 @@ const viewAllRoles = () => {
         ]
       },
     ]).then(answer => {
-        if (answer.viewAllRoles === "Main menu") {
-          startMenu();
-        }
-        if (answer.viewAllRoles === "Exit") {
-          process.exit();
-        }
-      })
+      if (answer.viewAllRoles === "Main menu") {
+        startMenu();
+      }
+      if (answer.viewAllRoles === "Exit") {
+        process.exit();
+      }
+    })
   });
 }
 
@@ -127,13 +128,13 @@ const viewAllEmployees = () => {
         ]
       },
     ]).then(answer => {
-        if (answer.viewAllEmployees === "Main menu") {
-          startMenu();
-        }
-        if (answer.viewAllEmployees === "Exit") {
-          process.exit();
-        }
-      })
+      if (answer.viewAllEmployees === "Main menu") {
+        startMenu();
+      }
+      if (answer.viewAllEmployees === "Exit") {
+        process.exit();
+      }
+    })
   });
 }
 
@@ -165,22 +166,24 @@ const addDepartment = () => {
       if (answer.addDepartmentMainExit === "Main menu") {
         startMenu();
       }
+      // //THIS IS A PROBLEM, DOES NOT ADD TO THE TABLE AND ALSO EXITS THE PROGRAM
+      // if (answer.newDepartmentName != " ") {
+      //   addNewDepartmentNameFunc();
+
+      // }
+      // //THIS IS A PROBLEM, DOES NOT ADD TO THE TABLE AND ALSO EXITS THE PROGRAM
+      // if (answer.newDepartmentID != " ") {
+      //   addNewDepartmentIDFunc();
+      // }
       if (answer.addDepartmentMainExit === "Exit") {
         process.exit();
       }
     })
-
-    // var sql = `INSERT INTO department (dept_id, dept_name) VALUES (?, ?);`;
-    // let ID = answer.newDepartmentID;
-    // let deptName = answer.newDepartmentName;
-    // db.query(sql, [ID, deptName], function (err, result) {
-    //   if (err) throw err;
-    //   console.log(result.affectedRows);
-    // });
   });
 
 }
 
+//GET ME WORKING
 const addEmployee = () => {
   db.connect(function (err) {
     if (err) throw err;
@@ -215,13 +218,13 @@ const addEmployee = () => {
         ]
       },
     ]).then(answer => {
-        if (answer.addNewEmployeeMainExit === "Main menu") {
-          startMenu();
-        }
-        if (answer.addNewEmployeeMainExit === "Exit") {
-          process.exit();
-        }
-      })
+      if (answer.addNewEmployeeMainExit === "Main menu") {
+        startMenu();
+      }
+      if (answer.addNewEmployeeMainExit === "Exit") {
+        process.exit();
+      }
+    })
 
     // var sql = `INSERT INTO department (dept_id, dept_name) VALUES (?, ?);`;
     // let ID = answer.newDepartmentID;
@@ -234,6 +237,7 @@ const addEmployee = () => {
 
 }
 
+//GET ME WORKING
 const updateEmployeeRole = () => {
   db.connect(function (err) {
     if (err) throw err;
@@ -244,5 +248,36 @@ const updateEmployeeRole = () => {
     // }
   })
 }
+
+// INSERT INTO course_names SET name = 'Underwater Basket Weaving';
+
+//FUNCTIONZ for ADDING NEW DEPARTMENT DATA
+const addNewDepartmentNameFunc = () => {
+  // db.connect(function (err) {
+  //   if (err) throw err;
+    const stmt = `INSERT INTO department(dept_name) VALUES ?  `;
+    var value = ['HQ']
+    console.log();
+    db.query(stmt, [value], function (err, result, fields) {
+      if (err) throw err
+    console.log(result)
+    console.log(fields)
+    });
+  // });
+}
+const addNewDepartmentIDFunc = () => {
+  const stmt = `INSERT INTO department(dept_id) VALUES ?`;
+  const value = ['46']
+  db.query(stmt, value, function (err, results) {
+    if (err) throw err
+  }
+  )
+}
+
+//FUNCTIONZ for ADDING EMPLOYEE TO COME WHEN ABOVE FUNCTIONS WORK
+
+
+//FUNCTIONZ for EMPLOYEE ROLE TO COME WHEN ABOVE FUNCTIONS WORK
+
 
 startMenu();
