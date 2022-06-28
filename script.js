@@ -166,7 +166,7 @@ const addDepartment = () => {
       if (answer.addDepartmentMainExit === "Main menu") {
         startMenu();
       }
-      // //THIS IS A PROBLEM, DOES NOT ADD TO THE TABLE AND ALSO EXITS THE PROGRAM
+      //THIS IS A PROBLEM, DOES NOT ADD TO THE TABLE AND ALSO EXITS THE PROGRAM
       // if (answer.newDepartmentName != " ") {
       //   addNewDepartmentNameFunc();
 
@@ -241,22 +241,35 @@ const addEmployee = () => {
 const updateEmployeeRole = () => {
   db.connect(function (err) {
     if (err) throw err;
-    // inquirer.prompt(updateEmployeeRole)
-    console.log("Broken")
-    // if (answer.addDepartmentMainExit === "Exit") {
-    //   process.exit();
-    // }
+    inquirer.prompt([
+      {
+        type: 'rawlist',
+        message: 'Choose an option',
+        name: 'addNewEmployeeMainExit',
+        choices: [
+          "Main menu",
+          "Exit"
+        ]
+      },
+    ]).then(answer => {
+      if (answer.addNewEmployeeMainExit === "Main menu") {
+        startMenu();
+      }
+      if (answer.addNewEmployeeMainExit === "Exit") {
+        process.exit();
+      }
+    })
   })
 }
 
 // INSERT INTO course_names SET name = 'Underwater Basket Weaving';
 
-//FUNCTIONZ for ADDING NEW DEPARTMENT DATA
+//FUNCTIONS for ADDING NEW DEPARTMENT DATA
 const addNewDepartmentNameFunc = () => {
   // db.connect(function (err) {
   //   if (err) throw err;
-    const stmt = `INSERT INTO department(dept_name) VALUES ?  `;
-    var value = ['HQ']
+    const stmt = `INSERT INTO department(dept_name, dept_id) VALUES ?, ?  `;
+    var value = ['HQ', '46']
     console.log();
     db.query(stmt, [value], function (err, result, fields) {
       if (err) throw err

@@ -17,7 +17,7 @@
 
 - [REPOSITORY](https://github.com/okdavekk/employee-tracker)
 
-- [VIDEO LINK](https://www.awesomescreenshot.com/video/9576714)
+- [VIDEO LINK](https://www.awesomescreenshot.com/video/9676793)
 
 ## Installation
 - Run npm install to install
@@ -157,4 +157,4 @@ Try to add some additional functionality to your application, such as the abilit
 [Video URL](https://2u-20.wistia.com/medias/2lnle7xnpk)
 
 ### My Example
-![My Video]()
+![My Video](./assets/employee-tracker.gif)
